@@ -4,10 +4,24 @@ var Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
+var itemSchema = new Schema({
+  name: String,
+  amazon_ID: String,
+  description: String,
+  photo_url: String,
+  price: Number,
+  link: String
+});
+
 var userSchema = new Schema({
   name: String,
-  email: String
+  email: String,
+  password: String,
+  wishlist: [itemSchema]
+}, {
+  timestamp: true
 });
+
 
 userSchema.pre('save', function(next) {
   // this will be set to the current document

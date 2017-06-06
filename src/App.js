@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-// import userService from '../../utils/userService';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import userService from './utils/userService';
 import './App.css';
+import HomePage from './pages/HomePage';
+// import NavBar from './components/Navbar/NavBar';
 
-/*--- Lifecycle Methods ---*/
-
-// componentDidMount() {
-//   let user = userService.getUser();
-//   this.setState({user});
-// }
 
 class App extends Component {
+
+  handleSignup = () => {
+    this.setState({user: userService.getUser()});
+  }
+
+  /*--- Lifecycle Methods ---*/
+
+  componentDidMount() {
+    // let user = userService.getUser();
+    // this.setState({user});
+  }
+
   render() {
     return (
-      <div>Hello World</div>
+      <div>
+        {/* <NavBar/>*/}
+        <BrowserRouter>
+          <Switch>
+            <Route path='/' component={HomePage} />
+          </Switch>
+        </BrowserRouter>
+      </div>
     );
   }
 }
