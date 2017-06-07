@@ -1,11 +1,14 @@
 .NavBar {
   display: flex;
   justify-content: center;
-  margin: 0 0 20px;
+  margin: 10px 0 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
 }
 
 .NavBar-link {
   margin: 0 10px;
+  color: black;
 }
 
 .NavBar-welcome {

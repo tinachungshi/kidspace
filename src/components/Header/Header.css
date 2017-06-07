@@ -1,0 +1,11 @@
+.jumbotron {
+    margin-bottom: 10px;
+    background-image: url("https://static.pexels.com/photos/168866/pexels-photo-168866.jpeg");
+    background-color: #17234E;
+    min-height: 50%;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+}

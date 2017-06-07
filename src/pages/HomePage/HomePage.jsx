@@ -25,7 +25,7 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="HomePage container" >
+      <div className="container">
 
         <h1>TOYS</h1>
 
