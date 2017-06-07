@@ -11,14 +11,8 @@ class LoginForm extends Component {
     }
   }
 
-  handleChange = (field, e) => {
-    this.setState({
-      // Using ES2015 Computed Property Names
-      [field]: e.target.value
-    });
-  }
-
   handleSubmit = (e) => {
+    console.log('this is handleSubmit')
     e.preventDefault();
     let self = this;
     userService.login(self.state)
@@ -26,8 +20,13 @@ class LoginForm extends Component {
         self.props.handleLogin();
         self.props.history.push('/');
       })
-      // invalid credentials - don't alert in YOUR app :)
       .catch(err => alert('Invalid Credentials!'));
+  }
+
+  handleChange = (field, e) => {
+    this.setState({
+      [field]: e.target.value
+    });
   }
 
   render() {

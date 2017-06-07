@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import userService from '../utils/userService';
+import userService from '../../utils/userService';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -16,7 +16,6 @@ class SignupForm extends Component {
   handleChange = (field, e) => {
     this.props.updateMessage('');
     this.setState({
-      // Using ES2015 Computed Property Names
       [field]: e.target.value
     });
   }
@@ -25,12 +24,10 @@ class SignupForm extends Component {
     e.preventDefault();
     let self = this;
     userService.signup(this.state)
-      // successfully signed up - show GamePage
       .then(() => {
         self.props.handleSignup();
         self.props.history.push('/');
       })
-      // invalid user data
       .catch(err => self.props.updateMessage(err.message));
   }
 

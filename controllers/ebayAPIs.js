@@ -11,10 +11,9 @@ function search(req, res) {
       url += `&keywords=${encodeURI('toys bestsellers ' + (req.query.keywords ? req.query.keywords : ''))}`;
 
   request(url, function(error, response, body) {
-    res.json(JSON.parse(body));
+    res.json(JSON.parse(body).findItemsByKeywordsResponse[0].searchResult[0].item);
   });
 }
-
 
 module.exports = {
   search
