@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import NavBar from '../../components/NavBar/NavBar';
 import toyAPI from '../../utils/toyAPI';
 import ToyView from '../../components/ToyView/ToyView';
 

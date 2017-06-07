@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
-  // Redirect
+  Route,
+  Redirect
 } from 'react-router-dom';
 import './App.css';
 import userService from './utils/userService';
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import HomePage from './pages/HomePage/HomePage';
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/NavBar/Boot';
+import Header from './components/Header/Header';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = Object.assign(
+      {}
+    );
   }
 
   /*---------- Callback Methods ----------*/
@@ -45,7 +48,7 @@ class App extends Component {
   render() {
     return (
             <div className='container App-container'>
-              <header className=''>HEADER</header>
+              <Header />
               <NavBar
                 user={this.state.user}
                 handleLogout={this.handleLogout}

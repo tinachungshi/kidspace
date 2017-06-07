@@ -15,7 +15,6 @@ function logout() {
 }
 
 function login(user) {
-  console.log('inside login')
   return userAPI.login(user)
     .then(token => tokenService.setToken(token));
 }

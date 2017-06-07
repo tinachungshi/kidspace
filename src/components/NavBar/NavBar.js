@@ -3,31 +3,23 @@ import {Link} from 'react-router-dom';
 import './NavBar.css';
 
 const NavBar = (props) => {
+  let nav = props.user ?
+    <div>
+      <Link to="/" className='NavBar-link' >HOME</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <Link to="" className='NavBar-link' onClick={props.handleLogout} >LOG OUT</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+      <span className='NavBar-welcome'>WELCOME, {props.user.name}</span>
+    </div> :
+    <div>
+      <Link to="/login" className='NavBar-link'>LOG IN</Link>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <Link to="/signup" className='NavBar-link'>SIGN UP</Link>
+    </div>;
+
   return (
-    <div className='NavBar'>
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-            <a className="navbar-brand" href="/">KIDDY SPACE</a>
-          </div>
-          <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
-              <li className="active"><a href="#">Home <span className="sr-only">(current)</span></a></li>
-              <li><a href="#">Picks</a></li>
-            </ul>
-            <ul className="nav navbar-nav navbar-right">
-              <li><a href="/login">Login</a></li>
-              <li><a href="/signup">Signup</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+    <div className='navbar navbar-default'>
+      {nav}
     </div>
   );
 };

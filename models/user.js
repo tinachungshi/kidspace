@@ -6,7 +6,7 @@ const SALT_ROUNDS = 6;
 
 var itemSchema = new Schema({
   name: String,
-  amazon_ID: String,
+  ebay_ID: String,
   description: String,
   photo_url: String,
   price: Number,
