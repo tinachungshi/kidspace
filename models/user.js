@@ -4,11 +4,10 @@ var Schema = mongoose.Schema;
 
 const SALT_ROUNDS = 6;
 
-var itemSchema = new Schema({
+var toySchema = new Schema({
   name: String,
-  ebay_ID: String,
-  description: String,
-  photo_url: String,
+  ebayId: String,
+  photoUrl: String,
   price: Number,
   link: String
 });
@@ -17,7 +16,7 @@ var userSchema = new Schema({
   name: String,
   email: String,
   password: String,
-  wishlist: [itemSchema]
+  wishlist: [toySchema]
 }, {
   timestamp: true
 });

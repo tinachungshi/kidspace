@@ -39,5 +39,6 @@ function createJWT(user) {
 
 module.exports = {
   signup,
-  login
+  login,
+  createJWT
 };

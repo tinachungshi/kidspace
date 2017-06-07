@@ -17,12 +17,22 @@ class HomePage extends Component {
     });
   }
 
+  addToyToWishlist = (toyIdx) => {
+    toyAPI.addToy(this.state.toys[toyIdx]).then(() => {
+      this.props.history.push('/wishlist');
+    });
+  }
+
   render() {
     return (
       <div className="HomePage container" >
+
         <h1>TOYS</h1>
 
-        <ToyView toys={this.state.toys} />
+        <ToyView
+          toys={this.state.toys}
+          handleAddToy={this.addToyToWishlist}
+        />
 
       </div>
     );

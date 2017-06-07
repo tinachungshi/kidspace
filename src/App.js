@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
   Switch,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom';
 import './App.css';
 import userService from './utils/userService';
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import HomePage from './pages/HomePage/HomePage';
-import NavBar from './components/NavBar/Boot';
+import WishlistPage from './pages/WishlistPage/WishlistPage';
+import NavBar from './components/NavBar/NavBar';
 import Header from './components/Header/Header';
 
 
@@ -53,12 +52,12 @@ class App extends Component {
                 user={this.state.user}
                 handleLogout={this.handleLogout}
               />
-              <Router>
                 <Switch>
-                  <Route exact path='/' render={() =>
+                  <Route exact path='/' render={(props) =>
                     <HomePage
                       user={this.state.user}
                       handleLogout={this.handleLogout}
+                      {...props}
                     />
                   }/>
                   <Route exact path='/signup' render={(props) =>
@@ -73,8 +72,12 @@ class App extends Component {
                       handleLogin={this.handleLogin}
                     />
                   }/>
+                  <Route exact path='/wishlist' render={(props) =>
+                    <WishlistPage
+                      user={userService.getUser()}
+                    />
+                  }/>
                 </Switch>
-              </Router>
               <footer className='header-footer'>This is the footer</footer>
             </div>
           );

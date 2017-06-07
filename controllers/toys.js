@@ -1,12 +1,19 @@
-var User = require('../models/user');
+var usersController = require('./users');
+var createJWT = usersController.createJWT;
 
-const toys = {
-  wishlist
+function addToy(req, res) {
+  req.user.wishlist.push(req.body);
+  if (req.user.wishlist.some(toy => toy.ebayId === req.body.ebayId))
+    return res.json({token: createJWT(req.user)});
+  req.user.save().then(() => res.json(createJWT(req.user)));
 }
 
-function wishlist(req, res) {
-  User.findById(req.params.id, function(err, toy) {
-    if (err) return res.redirect('/');
-    res.render('show', {user: req.user, toy:toy});
-  });
+
+
+
+
+
+
+module.exports = {
+  addToy
 }
