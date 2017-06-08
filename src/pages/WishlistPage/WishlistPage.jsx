@@ -6,6 +6,9 @@ const WishlistPage = (props) => {
     <div>
       <h1>Wishlist</h1>
       <p>{JSON.stringify(props.user.wishlist)}</p>
+
+
+
     </div>
 
   );

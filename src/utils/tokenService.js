@@ -9,8 +9,8 @@ function setToken(token) {
 
 function getToken() {
   var token = localStorage.getItem('token');
+  console.log('this is token.split', token.split('.')[1])
   if (token) {
-     // check if expired and remove if it is
      var payload = JSON.parse(atob(token.split('.')[1]));
       if (payload.exp < Date.now() / 1000) {
         localStorage.removeItem('token');
@@ -20,18 +20,19 @@ function getToken() {
   return token;
 }
 
-function removeToken() {
-  localStorage.removeItem('token');
-}
 
 function getUserFromToken() {
   var token = getToken();
   return token ? JSON.parse(atob(token.split('.')[1])).user : null;
 }
 
+function removeToken() {
+  localStorage.removeItem('token');
+}
+
 export default {
   setToken,
   getToken,
-  removeToken,
-  getUserFromToken
+  getUserFromToken,
+  removeToken
 };

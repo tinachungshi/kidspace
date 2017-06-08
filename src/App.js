@@ -3,7 +3,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import './App.css';
+// import './App.css';
 import userService from './utils/userService';
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
@@ -46,7 +46,7 @@ class App extends Component {
 
   render() {
     return (
-            <div className='container App-container'>
+            <div className='container'>
               <Header />
               <NavBar
                 user={this.state.user}

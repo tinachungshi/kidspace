@@ -1,7 +1,6 @@
 var request = require('request');
 
 function search(req, res) {
-  console.log(req.query)
   var url = "http://svcs.ebay.com/services/search/FindingService/v1";
       url += "?OPERATION-NAME=findItemsByKeywords";
       url += "&SERVICE-VERSION=1.0.0";
@@ -20,9 +19,25 @@ function search(req, res) {
       price: toy.sellingStatus[0].currentPrice[0].__value__,
       link: toy.viewItemURL[0]
     }));
-    res.json(toys);
+    res.json(filterOutDuplicates(toys));
   });
 }
+
+  function filterOutDuplicates(toys) {
+    var newToys = [];
+    var hasDuplicated = [];
+    for (var i=0; i<toys.length; i++ ) {
+      if (hasDuplicated.indexOf(toys[i].ebayId) === -1) {
+        hasDuplicated.push(toys[i].ebayId)
+        newToys.push(toys[i])
+      }
+    }
+    return newToys
+}
+
+
+
+
 
 module.exports = {
   search
