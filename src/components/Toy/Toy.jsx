@@ -1,4 +1,5 @@
 import React from 'react';
+import './Toy.css';
 
 const Toy = (props) => {
 	return (
