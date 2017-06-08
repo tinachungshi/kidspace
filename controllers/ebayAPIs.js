@@ -29,7 +29,9 @@ function search(req, res) {
     for (var i=0; i<toys.length; i++ ) {
       if (hasDuplicated.indexOf(toys[i].ebayId) === -1) {
         hasDuplicated.push(toys[i].ebayId)
-        newToys.push(toys[i])
+        if (newToys.length <= 25) {
+          newToys.push(toys[i])
+        }
       }
     }
     return newToys
