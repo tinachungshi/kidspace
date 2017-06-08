@@ -1,38 +1,37 @@
-import React from 'react';
+import React, {Component} from 'react';
+import toyAPI from '../../utils/toyAPI';
+import Toy from '../../components/Toy/Toy';
 
-const WishlistPage = (props) => {
+class WishlistPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      wishlist: []
+    }
+  }
 
-  return (
-    <div>
-      {/*<p>{JSON.stringify(props.user.wishlist)}</p>*/}
-      <div>
-        <div className="container">
-          <div className="row">
-            <h1>Wishlist</h1>
-            {props.user.wishlist.map((toy, i) => {
-              return (
-                <ul className="thumbnails" key={i}>
-                  <div className="col-md-6">
-                    <div className="thumbnail">
-                      <img src={toy.photoUrl} alt="Ebay" className="img-responsive" />
-                      <div className="caption">
-                        <p><b>{toy.name}</b></p>
-                        <p>Link: <a href={toy.link} target="_blank" rel="noopener noreferrer">Ebay Page</a></p>
-                        <p>Price: {toy.price}</p>
-                        <button className="btn btn-primary btn-block" onClick={() => props.handleAddToy(i)}>Delete from wishlist</button>
-                      </div>
-                      </div>
-                    </div>
-                </ul>
-                  );
-            })}
-          </div>
-        </div>
+  componentDidMount() {
+    toyAPI.getCart().then(wishlist => this.setState({wishlist: wishlist}));
+  }
+
+  removeToyFromWishlist = (toyId) => {
+    this.props.removeToyFromWishlist(toyId)
+    .then(wishlist => this.setState({wishlist: wishlist}))
+  }
+
+  render() {
+    return (
+      <div className="container" >
+        {this.state.wishlist.map(toy =>
+          <Toy
+            key={toy.ebayId}
+            toy={toy}
+            removeToyFromWishlist={this.removeToyFromWishlist}
+          />
+        )}
       </div>
-
-        </div>
-
-        );
+    );
+  }
 
 }
 

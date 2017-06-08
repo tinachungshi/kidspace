@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
+import Toy from '../../components/Toy/Toy';
 import toyAPI from '../../utils/toyAPI';
-
 
 class ToyView extends Component {
 
   addToyToWishlist = (toyIdx) => {
-    var toy = this.props.toys[toyIdx];
-    toy = JSON.stringify(toy);
-    toy = toy.replace(/[\uE000-\uF8FF]/g, '');
-    toy = JSON.parse(toy);
-    toyAPI.addToy(toy).then(() => {
+    toyAPI.addToy(this.props.toys[toyIdx]).then(cart => {
+
       this.props.history.push('/wishlist');
     });
   }
 
   componentDidMount() {
     toyAPI.index().then(toys => {
-      console.log('this is toys', toys)
       this.props.updateToys(toys);
     });
   }
@@ -29,17 +25,11 @@ class ToyView extends Component {
             {this.props.toys.map((toy, i) => {
               return (
                 <ul className="thumbnails" key={i}>
-                  <div className="col-md-6">
-                    <div className="thumbnail">
-                      <img src={toy.photoUrl} alt="Ebay" className="img-responsive" />
-                      <div className="caption">
-                        <p><b>{toy.name}</b></p>
-                        <p>Link: <a href={toy.link} target="_blank" rel="noopener noreferrer">Ebay Page</a></p>
-                        <p>Price: {toy.price}</p>
-                        <button className="btn btn-primary btn-block" onClick={() => this.addToyToWishlist(i)}>Add to wishlist</button>
-                      </div>
-                    </div>
-                  </div>
+                  <Toy
+                    toy={toy}
+                    idx={i}
+                    addToyToWishlist={this.addToyToWishlist}
+                  />
                 </ul>
               );
             })}

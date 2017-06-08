@@ -6,9 +6,11 @@ var toysController = require('../../controllers/toys')
 router.get('/search', ebayController.search);
 router.post('/', toysController.addToy);
 
+
+router.delete('/', toysController.deleteToyFromDb);
+
 router.get('/cart', toysController.getCart);
 
-// router.delete('/toys/:id', toysController.delete);
 
 
 

@@ -12,8 +12,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import WishlistPage from './pages/WishlistPage/WishlistPage';
 import NavBar from './components/NavBar/NavBar';
 import Header from './components/Header/Header';
-import ToyView from './components/ToyView/ToyView';
-
+import ToyView from './pages/ToyView/ToyView';
 
 class App extends Component {
   constructor(props) {
@@ -42,12 +41,9 @@ class App extends Component {
     this.setState({toys: toys});
   }
 
-  getIdDeleteRequest = (toyIdx) => {
-    var toy = this.state.toys[toyIdx];
-    toy = JSON.stringifyi(toy);
-    toyAPI.deleteToy(toy);
+  removeToyFromWishlist = (toyId) => {
+    return toyAPI.deleteToy(toyId);
   }
-
 
   /*---------- Lifecycle Methods ----------*/
 
@@ -92,7 +88,7 @@ class App extends Component {
           <Route exact path='/wishlist' render={(props) =>
             <WishlistPage
               user={userService.getUser()}
-              getIdDeleteRequest={this.getIdDeleteRequest}
+              removeToyFromWishlist={this.removeToyFromWishlist}
             />
           } />
           <Route exact path='/about' render={(props) =>

@@ -8,33 +8,31 @@ function addToy(req, res) {
     if (user.wishlist.some(toy => {
       return toy.ebayId === req.body.ebayId
     })) {
-      return res.json({token: createJWT(user)});
+      return res.json(user.wishlist);
     }
     user.wishlist.push(req.body);
-    user.save().then(() => res.json({token: createJWT(user)}));
+    user.save().then(() => res.json(user.wishlist));
   });
 }
 
 function getCart(req, res) {
-  res.json(req.user.cart);
+  User.findById(req.user._id).exec().then(user => {
+    res.json(user.wishlist);
+  });
 }
 
-// function deleteToyFromWishlist = (toyIdx) => {
-//     var toy = this.state.toys[toyIdx];
-//     toy = JSON.stringifyi(toy);
-//     toy.findByIdAndRemove(req.params.id, function (err, toy) {
-//       if (err) return res.redirect('/wishlist');
-//     } else {
-//         res.redirect('/pets/found');
-//     }
-//   );
-// }
-
-
-
+function deleteToyFromDb(req, res) {
+  User.findById(req.user._id).exec().then(user => {
+    user.wishlist.id(req.body.toyId).remove();
+    user.save().then(() => {
+      res.json(user.wishlist);
+    })
+  });
+}
 
 
 module.exports = {
   addToy,
-  getCart
+  getCart,
+  deleteToyFromDb
 }
