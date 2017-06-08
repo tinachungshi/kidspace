@@ -19,6 +19,16 @@ function getCart(req, res) {
   res.json(req.user.cart);
 }
 
+// function deleteToyFromWishlist = (toyIdx) => {
+//     var toy = this.state.toys[toyIdx];
+//     toy = JSON.stringifyi(toy);
+//     toy.findByIdAndRemove(req.params.id, function (err, toy) {
+//       if (err) return res.redirect('/wishlist');
+//     } else {
+//         res.redirect('/pets/found');
+//     }
+//   );
+// }
 
 
 

@@ -38,18 +38,8 @@ class App extends Component {
     this.setState({ user: userService.getUser() });
   }
 
-  updateToys(toys) {
-    this.setState({ toys });
-  }
-
-  addToyToWishlist = (toyIdx) => {
-    var toy = this.state.toys[toyIdx];
-    toy = JSON.stringify(toy);
-    toy = toy.replace(/[\uE000-\uF8FF]/g, '');
-    toy = JSON.parse(toy);
-    toyAPI.addToy(toy).then(() => {
-      this.props.history.push('/wishlist');
-    });
+  updateToys = (toys) => {
+    this.setState({toys: toys});
   }
 
   getIdDeleteRequest = (toyIdx) => {
@@ -84,7 +74,6 @@ class App extends Component {
               handleLogout={this.handleLogout}
               toys={this.state.toys}
               updateToys={this.updateToys}
-              handleAddToy={this.addToyToWishlist}
               {...props}
             />
           } />

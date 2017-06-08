@@ -4,9 +4,19 @@ import toyAPI from '../../utils/toyAPI';
 
 class ToyView extends Component {
 
+  addToyToWishlist = (toyIdx) => {
+    var toy = this.props.toys[toyIdx];
+    toy = JSON.stringify(toy);
+    toy = toy.replace(/[\uE000-\uF8FF]/g, '');
+    toy = JSON.parse(toy);
+    toyAPI.addToy(toy).then(() => {
+      this.props.history.push('/wishlist');
+    });
+  }
+
   componentDidMount() {
-    console.log(this.props)
     toyAPI.index().then(toys => {
+      console.log('this is toys', toys)
       this.props.updateToys(toys);
     });
   }
@@ -26,7 +36,7 @@ class ToyView extends Component {
                         <p><b>{toy.name}</b></p>
                         <p>Link: <a href={toy.link} target="_blank" rel="noopener noreferrer">Ebay Page</a></p>
                         <p>Price: {toy.price}</p>
-                        <button className="btn btn-primary btn-block" onClick={() => this.props.handleAddToy(i)}>Add to wishlist</button>
+                        <button className="btn btn-primary btn-block" onClick={() => this.addToyToWishlist(i)}>Add to wishlist</button>
                       </div>
                     </div>
                   </div>

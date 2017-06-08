@@ -19,10 +19,7 @@ const WishlistPage = (props) => {
                         <p><b>{toy.name}</b></p>
                         <p>Link: <a href={toy.link} target="_blank" rel="noopener noreferrer">Ebay Page</a></p>
                         <p>Price: {toy.price}</p>
-                        {/*<form id="button-delete" action="/pets/<%= pet.id %>?_method=DELETE" method="POST">
-                          <button class="btn btn-default" type="submit">DELETE</button>
-                        </form><br>*/}
-                          {/*<button className="btn btn-primary btn-block" onClick={() => props.handleAddToy(i)}>Delete from wishlist</button>*/}
+                        <button className="btn btn-primary btn-block" onClick={() => props.handleAddToy(i)}>Delete from wishlist</button>
                       </div>
                       </div>
                     </div>
