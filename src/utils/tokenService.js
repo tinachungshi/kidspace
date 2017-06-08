@@ -9,7 +9,6 @@ function setToken(token) {
 
 function getToken() {
   var token = localStorage.getItem('token');
-  console.log('this is token.split', token.split('.')[1])
   if (token) {
      var payload = JSON.parse(atob(token.split('.')[1]));
       if (payload.exp < Date.now() / 1000) {

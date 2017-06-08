@@ -18,7 +18,11 @@ class HomePage extends Component {
   }
 
   addToyToWishlist = (toyIdx) => {
-    toyAPI.addToy(this.state.toys[toyIdx]).then(() => {
+    var toy = this.state.toys[toyIdx];
+    toy = JSON.stringify(toy);
+    toy = toy.replace(/[\uE000-\uF8FF]/g, '');
+    toy = JSON.parse(toy);
+    toyAPI.addToy(toy).then(() => {
       this.props.history.push('/wishlist');
     });
   }
