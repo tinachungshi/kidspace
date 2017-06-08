@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import toyAPI from '../../utils/toyAPI';
 import ToyView from '../../components/ToyView/ToyView';
 
@@ -13,7 +13,7 @@ class HomePage extends Component {
 
   componentDidMount() {
     toyAPI.index().then(toys => {
-      this.setState({toys});
+      this.setState({ toys });
     });
   }
 
@@ -27,20 +27,26 @@ class HomePage extends Component {
     });
   }
 
-  render() {
-    return (
-      <div className="container">
-
-        <h1>TOYS</h1>
-
-        <ToyView
-          toys={this.state.toys}
-          handleAddToy={this.addToyToWishlist}
-        />
-
-      </div>
-    );
+  getIdDeleteRequest = (toyIdx) => {
+    var toy = this.state.toys[toyIdx];
+    toy = JSON.stringifyi(toy);
+    toyAPI.deleteToy(toy);
   }
+
+
+render() {
+  return (
+    <div className="container">
+
+      <ToyView
+        toys={this.state.toys}
+        handleAddToy={this.addToyToWishlist}
+        getIdDeleteRequest={this.getIdDeleteRequest}
+      />
+
+    </div>
+  );
+}
 }
 
 export default HomePage;

@@ -23,7 +23,20 @@ function addToy(toy) {
   });
 }
 
+function deleteToy(toy) {
+  return fetch(BASE_URL, {
+    method: 'DELETE',
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${tokenService.getToken()}`
+    }),
+    body: JSON.stringify(toy)
+  })
+  .then(res => res.json());
+}
+
 export default {
   index,
-  addToy
+  addToy,
+  deleteToy
 };

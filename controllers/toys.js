@@ -15,6 +15,9 @@ function addToy(req, res) {
   });
 }
 
+function getCart(req, res) {
+  res.json(req.user.cart);
+}
 
 
 
@@ -22,5 +25,6 @@ function addToy(req, res) {
 
 
 module.exports = {
-  addToy
+  addToy,
+  getCart
 }

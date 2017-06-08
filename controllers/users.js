@@ -30,6 +30,7 @@ function login(req, res) {
 /*----- Helper Functions -----*/
 
 function createJWT(user) {
+  delete user.cart;
   return jwt.sign(
     {user}, // data payload
     SECRET,
