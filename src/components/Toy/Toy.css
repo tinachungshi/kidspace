@@ -9,3 +9,13 @@
 	height: 140px;
 	display: block;
 	}
+
+.title-text {
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
+.ebay-text {
+	font-size: 18px;
+	text-transform: uppercase;
+}

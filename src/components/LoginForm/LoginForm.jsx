@@ -12,7 +12,6 @@ class LoginForm extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log('this is handleSubmit')
     e.preventDefault();
     let self = this;
     userService.login(self.state)

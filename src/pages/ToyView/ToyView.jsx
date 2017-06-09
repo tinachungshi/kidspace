@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Toy from '../../components/Toy/Toy';
 import toyAPI from '../../utils/toyAPI';
-import './ToyView.css';
 
 class ToyView extends Component {
 

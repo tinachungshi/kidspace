@@ -1,8 +1,14 @@
+.header-text {
+    color: white; 
+    font-size: 70px !important;
+    font-weight: 400 !important;
+}
+
 .jumbotron {
     margin-bottom: 10px;
-    background-image: url("https://static.pexels.com/photos/168866/pexels-photo-168866.jpeg");
+    background-image: url("http://i.imgur.com/veGnFJp.jpg");
     background-color: #17234E;
-    min-height: 50%;
+    min-height: 60%;
     height: 150px;
     background-repeat: no-repeat;
     background-position: center;

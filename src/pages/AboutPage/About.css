@@ -1,0 +1,22 @@
+.parallax {
+    background-image: url("http://i.imgur.com/GNGtNeq.jpg");
+    min-height: 20px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.h1-about {
+	font-size: 50px;
+	text-transform: uppercase;
+}
+
+.h3-about {
+	font-size: 26px;
+	font-weight: 300;
+}
+
+.p-about {
+	font-size: 20px;
+}

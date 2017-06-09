@@ -3,7 +3,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-// import './App.css';
 import toyAPI from './utils/toyAPI';
 import userService from './utils/userService';
 import SignupPage from './pages/SignupPage/SignupPage';
@@ -38,7 +37,7 @@ class App extends Component {
   }
 
   updateToys = (toys) => {
-    this.setState({toys: toys});
+    this.setState({ toys: toys });
   }
 
   removeToyFromWishlist = (toyId) => {
@@ -56,13 +55,11 @@ class App extends Component {
     return (
 
       <div className='container'>
-
         <Header />
         <NavBar
           user={this.state.user}
           handleLogout={this.handleLogout}
         />
-
         <Switch>
           <Route exact path='/' render={(props) =>
             <ToyView
@@ -96,7 +93,6 @@ class App extends Component {
               user={userService.getUser()}
             />
           } />
-
         </Switch>
       </div>
     );
